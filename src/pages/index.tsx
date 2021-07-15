@@ -22,8 +22,8 @@ export default function Index() {
           <SocialList />
           <a href="www.facebook.com">fb</a>
           {courses.map(course => (
-<Link href={"'/"+{course.title}+"'"}>
-<h2>course.title</h2>
+/*<Link href={"'/"+{course.title}+"'"}>*/
+<h2>{course.title}</h2>
 </Link>
 ))}
         </div>
