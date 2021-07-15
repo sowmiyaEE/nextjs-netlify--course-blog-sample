@@ -21,6 +21,11 @@ export default function Index() {
           <h2>A content management template with Next.js and Netlify.</h2>
           <SocialList />
           <a href="www.facebook.com">fb</a>
+          {courses.map(course => (
+<Link href={"'/"+{course.title}+"'"}>
+<h2>course.title</h2>
+</Link>
+))}
         </div>
       </div>
       <style jsx>{`
