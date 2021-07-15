@@ -3,6 +3,8 @@ import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { SocialList } from "../components/SocialList";
+import courses from '../data/courses.json';
+import Link from 'next/link';
 
 export default function Index() {
   return (
@@ -15,9 +17,14 @@ export default function Index() {
           <h1>
             Hi, We're Next.js & Netlify<span className="fancy">.</span>
           </h1>
-          <span className="handle">@nextjs-netlify-blog</span>
-          <h2>A blog template with Next.js and Netlify.</h2>
+          <span className="handle">@E.Sowmiya</span>
+          <h2>A content management template with Next.js and Netlify.</h2>
           <SocialList />
+          {courses.map(course => (
+<Link href={'/${course.title}'}>
+<h2>course.title</h2>
+</Link>
+))}
         </div>
       </div>
       <style jsx>{`
