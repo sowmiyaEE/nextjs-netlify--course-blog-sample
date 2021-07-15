@@ -10,10 +10,10 @@ return {Paths,fallback: false}}
 const course=courses.find(color =>color.title === params.course)
 return {props: {course}}
 }
-export default function course({course})
+export default function Course({course})
 {
 return<div >
-<h1>color.title</h1>
-<p>color.details</p>
+<h1>course.title</h1>
+<p>course.details</p>
 </div>
 }
