@@ -1,5 +1,5 @@
 //[course.js]
-import courses from courses.json;
+import courses from '../data/courses.json';
 
 export async function getStaticPaths(){
 const paths = courses.map(course => ({
@@ -10,7 +10,7 @@ return {Paths,fallback: false}}
 const course=courses.find(color =>color.title === params.course)
 return {props: {course}}
 }
-export default function Course({course})
+export default function course({course})
 {
 return<div >
 <h1>color.title</h1>
