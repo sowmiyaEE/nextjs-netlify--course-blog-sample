@@ -3,10 +3,11 @@ import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { SocialList } from "../components/SocialList";
-import courses from '../data/courses.json';
-import Link from 'next/link';
-
+import Link from "next/link";
+import fs from "fs";
 export default function Index() {
+  const files=fs.readdirSync("posts");
+  const slugs=files.map(filename => filename.replace(".md",""))
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -15,17 +16,24 @@ export default function Index() {
       <div className="container">
         <div>
           <h1>
-            Hi, Courses for you<span className="fancy">.</span>
+            Hi, Courses Lists UI<span className="fancy">.</span>
           </h1>
           <span className="handle">@E.Sowmiya</span>
           <h2>A content management template with Next.js and Netlify.</h2>
           <SocialList />
-          <a href="www.facebook.com">fb</a>
-          {courses.map(course => (
-/*<Link href={"'/"+{course.title}+"'"}>*/
-<h2>{course.title}</h2>
-</Link>
-))}
+ <div>
+    slugs:
+   {slugs.map(slug => {
+
+  <div key={slug}>  
+    <Link href={slug}>
+       <a>{slug}</a>
+    </Link>
+  </div>
+  );
+})}
+</div>
+
         </div>
       </div>
       <style jsx>{`
