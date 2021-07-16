@@ -1,19 +1,26 @@
-//[course.js]
-import courses from '../data/courses.json';
+import react from "react";
+import fs from "fs";
+import path from "path";
+import Head from 'next/head';
+import Link from 'next/link';
 
-export async function getStaticPaths(){
-const paths = courses.map(course => ({
- params : {  course:course.title}
-}))
-return {Paths,fallback: false}}
- export async function getStaticProps({params}){
-const course=courses.find(color =>color.title === params.course)
-return {props: {course}}
-}
-export default function Course({course})
-{
-return<div >
-<h1>course.title</h1>
-<p>course.details</p>
-</div>
-}
+const Post=({cote}) => {
+return <div>The contents: {cote}</div>;
+};
+
+
+export const getStaticPaths=async() => {
+const files=fs.readdirSync("courses");
+console.log("files",files);
+const paths = files.map(filename => ({
+ params : {  slug : filename.replace(".md","")}
+}));
+return {Paths,fallback: false};};
+
+ export const getStaticProps =async({params:{slug}}) =>{
+const cote=fs.readFileSync(path.join('courses',slug+'.md')).toString();
+
+return {props: {cote}};
+};
+
+export default Post;
