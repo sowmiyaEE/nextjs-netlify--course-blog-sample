@@ -5,10 +5,10 @@ import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { SocialList } from "../components/SocialList";
 import Link from "next/link";
 import fs from "fs";
-export default function Index() {
-  const files=fs.readdirSync("courses");
-  const slugs=files.map(filename => filename.replace(".md",""))
-  return (
+export default function Index({ slugs }) {
+  /*const files=fs.readdirSync("courses");
+  const slugs=files.map(filename => filename.replace(".md",""));
+  */return (
     <Layout>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
@@ -75,4 +75,14 @@ export default function Index() {
       `}</style>
     </Layout>
   );
+}
+export const getStaticProps = async() =>
+{
+const files=fs.readdirSync("courses");
+return{
+  {props : {
+     slugs : files.map(filename => filename.replace(".md",""))
+    }
+
+}
 }
