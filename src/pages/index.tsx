@@ -6,7 +6,7 @@ import { SocialList } from "../components/SocialList";
 import Link from "next/link";
 import fs from "fs";
 export default function Index() {
-  const files=fs.readdirSync("posts");
+  const files=fs.readdirSync("courses");
   const slugs=files.map(filename => filename.replace(".md",""))
   return (
     <Layout>
